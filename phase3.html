@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phase 3 Scoring | Clarendon</title>
+    <meta name="description" content="Phase 3 scoring workspace for Continuous Improvement and Strategic Growth." />
+    <meta name="theme-color" content="#1090c0" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="phase-scoring.js"></script>
+  </head>
+  <body data-phase="phase3">
+    <header class="topbar panel">
+      <div class="header-brand">
+        <img class="header-logo" src="assets/tdbmlogo.png" alt="The Dental Business Manager logo" />
+        <div>
+          <p class="eyebrow">The Dental Business Manager</p>
+          <h1>Clarendon Dental Business Diagnostics</h1>
+        </div>
+      </div>
+      <nav class="topnav" aria-label="Primary">
+        <a class="navlink" href="roadmap.html">Partnership Portal</a>
+        <a class="navlink" href="index.html">Phase 1</a>
+        <a class="navlink" href="phase2.html">Phase 2</a>
+        <a class="navlink active" href="phase3.html">Phase 3</a>
+        <a class="navlink" href="reports.html">Reports</a>
+        <button class="navlink navbutton" id="signOutBtn" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="panel practice-panel">
+          <p class="helper">Use this page for Phase 3 scoring and actions across each strategic cycle. Keep the workflow record on its separate page.</p>
+          <a class="secondary phase-detail-link" href="phase3-details.html">Open Phase 3 workflow record</a>
+        </div>
+
+        <div class="panel summary-panel">
+          <h2>Progress</h2>
+          <div class="stat-grid">
+            <div>
+              <strong id="sectionProgress">0/3</strong>
+              <span>Sections</span>
+            </div>
+            <div>
+              <strong id="actionProgress">0</strong>
+              <span>Actions</span>
+            </div>
+            <div>
+              <strong id="lastSaved">—</strong>
+              <span>Last saved</span>
+            </div>
+          </div>
+          <div class="progress-bar">
+            <div id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="panel report-panel">
+          <h2>Phase report</h2>
+          <div class="report-grid">
+            <article>
+              <span>Readiness</span>
+              <strong id="readinessScore">0%</strong>
+              <p id="readinessLabel">No data yet</p>
+            </article>
+            <article>
+              <span>Weakest area</span>
+              <strong id="weakestSection">—</strong>
+              <p id="weakestNote">Add section scores to surface risks</p>
+            </article>
+            <article>
+              <span>High priority items</span>
+              <strong id="highPriorityCount">0</strong>
+              <p>Sections marked as high priority</p>
+            </article>
+          </div>
+          <div class="report-list" id="reportInsights"></div>
+        </div>
+
+        <nav class="panel nav-panel">
+          <h2>Strategic cycles</h2>
+          <div id="sectionNav" class="section-nav"></div>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section class="hero panel">
+          <div>
+            <p class="eyebrow">Phase 3 - Months 5-12</p>
+            <h2>Continuous improvement scoring workspace</h2>
+            <p>
+              Track delivery strength, priorities and action plans for each 90-day cycle so strategic growth decisions
+              are evidence-based and consistently reviewed.
+            </p>
+          </div>
+          <div class="hero-card">
+            <span>Objective</span>
+            <p>
+              Embed improvements, strengthen leadership and refine the growth roadmap through three review-driven cycles.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel brief-panel">
+          <div>
+            <h2>How to use this page</h2>
+            <p>Score each cycle, assign ownership, and capture actions and open questions ready for each strategic review session.</p>
+          </div>
+        </section>
+
+        <section id="sections" class="sections"></section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reports | Clarendon</title>
+    <meta name="description" content="Write, upload, and store business reports for Clarendon diagnostics." />
+    <meta name="theme-color" content="#1090c0" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="reports.js"></script>
+  </head>
+  <body>
+    <header class="topbar panel">
+      <div class="header-brand">
+        <img class="header-logo" src="assets/tdbmlogo.png" alt="The Dental Business Manager logo" />
+        <div>
+          <p class="eyebrow">The Dental Business Manager</p>
+          <h1>Clarendon Reports</h1>
+        </div>
+      </div>
+      <nav class="topnav" aria-label="Primary">
+        <a class="navlink" href="roadmap.html">Partnership Portal</a>
+        <a class="navlink" href="index.html">Phase 1</a>
+        <a class="navlink" href="phase2.html">Phase 2</a>
+        <a class="navlink" href="phase3.html">Phase 3</a>
+        <a class="navlink active" href="reports.html">Reports</a>
+        <button class="navlink navbutton" id="signOutBtn" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <div class="page-shell reports-shell">
+      <aside class="sidebar reports-sidebar">
+        <section class="panel report-list-panel reports-guide">
+          <h2>How this page works</h2>
+          <p class="helper">This page has two separate options:</p>
+          <ul class="reports-guide-list">
+            <li><strong>Notes & messages:</strong> write updates or comments between you and the practice.</li>
+            <li><strong>Shared documents:</strong> upload files (Excel, Word, PDF, CSV) with context.</li>
+          </ul>
+        </section>
+
+        <section class="panel report-list-panel">
+          <h2>Notes & messages</h2>
+          <p class="helper">Editable notes for communication between you and the practice.</p>
+          <div id="reportList" class="report-list-items"></div>
+        </section>
+
+        <section class="panel report-list-panel">
+          <h2>Shared documents</h2>
+          <p class="helper">This is your shared file library (Excel, Word, PDF, CSV, and text files).</p>
+          <div id="documentList" class="document-list"></div>
+        </section>
+
+        <section class="panel report-list-panel">
+          <h2>Quick actions</h2>
+          <div class="report-actions">
+            <button id="newReportBtn" class="ghost" type="button">New report</button>
+            <button id="loadDraftBtn" class="secondary" type="button">Load accounts summary draft</button>
+          </div>
+        </section>
+      </aside>
+
+      <main class="content">
+        <section class="panel report-editor-panel">
+          <h2>Option 1: Notes & messages</h2>
+          <p class="helper">Use this area for written updates, feedback, and communication notes.</p>
+
+          <div class="editor-toolbar">
+            <label class="report-upload">
+              Import text note (.txt/.md)
+              <input id="reportFileInput" type="file" accept=".txt,.md,.markdown,text/plain,text/markdown" />
+            </label>
+            <span id="uploadName" class="helper">No file selected</span>
+          </div>
+
+          <label>
+            Report title
+            <input id="reportTitle" type="text" placeholder="e.g. Clarendon Accounts Review (2022-2024)" />
+          </label>
+
+          <label>
+            Report content
+            <textarea id="reportBody" class="report-body" placeholder="Write your report here..."></textarea>
+          </label>
+
+          <div class="report-actions">
+            <button id="saveReportBtn" class="secondary" type="button">Save report notes</button>
+            <button id="deleteReportBtn" class="ghost danger" type="button">Delete selected</button>
+          </div>
+        </section>
+
+        <section class="panel report-editor-panel">
+          <h2>Option 2: Shared documents</h2>
+          <p class="helper">Upload practice files with a short description and who the file is for.</p>
+
+          <div class="editor-toolbar">
+            <label class="report-upload">
+              Choose shared file
+              <input
+                id="documentFileInput"
+                type="file"
+                accept=".txt,.md,.markdown,.csv,.xls,.xlsx,.doc,.docx,.pdf,text/plain,text/markdown,text/csv,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              />
+            </label>
+            <span id="documentUploadName" class="helper">No document selected</span>
+          </div>
+
+          <label>
+            Short description
+            <input id="documentDescription" type="text" placeholder="e.g. Weekly KPI snapshot for week ending 12 Jul" />
+          </label>
+
+          <label>
+            Who is this for?
+            <input id="documentAudience" type="text" placeholder="e.g. Owner and practice manager" />
+          </label>
+
+          <div class="report-actions">
+            <button id="uploadDocumentBtn" class="secondary" type="button">Add to shared documents</button>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

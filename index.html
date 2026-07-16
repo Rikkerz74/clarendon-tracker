@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clarendon Business Diagnostics</title>
+    <meta
+      name="description"
+      content="A business diagnostics tracker for Clarendon Dental to capture financial, patient, marketing, team, operations, capacity, and commercial findings."
+    />
+    <meta name="theme-color" content="#1090c0" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="topbar panel">
+      <div class="header-brand">
+        <img class="header-logo" src="assets/tdbmlogo.png" alt="The Dental Business Manager logo" />
+        <div>
+          <p class="eyebrow">The Dental Business Manager</p>
+          <h1>Clarendon Dental Business Diagnostics</h1>
+        </div>
+      </div>
+      <nav class="topnav" aria-label="Primary">
+        <a class="navlink" href="roadmap.html">Partnership Portal</a>
+        <a class="navlink active" href="index.html">Phase 1</a>
+        <a class="navlink" href="phase2.html">Phase 2</a>
+        <a class="navlink" href="phase3.html">Phase 3</a>
+        <a class="navlink" href="reports.html">Reports</a>
+        <button class="navlink navbutton" id="signOutBtn" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="panel practice-panel">
+          <p class="helper">This signed-in diagnostic is saved per owner account and shared across the tracker and roadmap.</p>
+          <a class="secondary phase-detail-link" href="phase1-details.html">Open Phase 1 workflow record</a>
+        </div>
+
+        <div class="panel summary-panel">
+          <h2>Progress</h2>
+          <div class="stat-grid">
+            <div>
+              <strong id="sectionProgress">0/7</strong>
+              <span>Sections</span>
+            </div>
+            <div>
+              <strong id="actionProgress">0</strong>
+              <span>Actions</span>
+            </div>
+            <div>
+              <strong id="lastSaved">—</strong>
+              <span>Last saved</span>
+            </div>
+          </div>
+          <div class="progress-bar">
+            <div id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="panel report-panel">
+          <h2>Practice report</h2>
+          <div class="report-grid">
+            <article>
+              <span>Readiness</span>
+              <strong id="readinessScore">0%</strong>
+              <p id="readinessLabel">No data yet</p>
+            </article>
+            <article>
+              <span>Weakest area</span>
+              <strong id="weakestSection">—</strong>
+              <p id="weakestNote">Add section scores to surface risks</p>
+            </article>
+            <article>
+              <span>High priority items</span>
+              <strong id="highPriorityCount">0</strong>
+              <p>Sections marked as high priority</p>
+            </article>
+          </div>
+          <div class="report-list" id="reportInsights"></div>
+        </div>
+
+        <nav class="panel nav-panel">
+          <h2>Diagnostic areas</h2>
+          <div id="sectionNav" class="section-nav"></div>
+        </nav>
+
+      </aside>
+
+      <main class="content">
+        <section id="sections" class="sections"></section>
+      </main>
+    </div>
+  </body>
+</html>

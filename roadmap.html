@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partnership Portal | Clarendon</title>
+    <meta
+      name="description"
+      content="Partnership Portal for Clarendon Dental covering the 12-month growth journey."
+    />
+    <meta name="theme-color" content="#1090c0" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="roadmap.js"></script>
+  </head>
+  <body class="roadmap-page">
+    <header class="topbar panel">
+      <div class="header-brand">
+        <img class="header-logo" src="assets/tdbmlogo.png" alt="The Dental Business Manager logo" />
+        <div>
+          <p class="eyebrow">The Dental Business Manager</p>
+          <h1>Partnership Portal</h1>
+          <p class="helper">Growing a stronger practice, one step at a time.</p>
+        </div>
+      </div>
+      <nav class="roadmap-nav" aria-label="Primary">
+        <a class="navlink active" href="roadmap.html">Partnership Portal</a>
+        <a class="navlink" href="index.html">Phase 1</a>
+        <a class="navlink" href="phase2.html">Phase 2</a>
+        <a class="navlink" href="phase3.html">Phase 3</a>
+        <a class="navlink" href="reports.html">Reports</a>
+        <button class="navlink navbutton" id="signOutBtn" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <main class="roadmap-shell">
+      <section class="roadmap-hero panel">
+        <p class="eyebrow">Three-phase growth programme</p>
+        <h2 class="roadmap-practice-name">Clarenden Dental</h2>
+        <p class="roadmap-summary">
+          Your 12-Month Partnership Journey
+        </p>
+        <div class="timeline-note">
+          <strong>Journey</strong>
+          <ul class="phase-list">
+            <li>Foundation (Month 1): Diagnostic and baseline clarity</li>
+            <li>Implementation (Months 2-4): Priority delivery and strategic review</li>
+            <li>Continuous Development (Months 5-12): Ongoing optimisation and growth cycles</li>
+          </ul>
+          <p id="phaseTrackingHint" class="helper">Set a start date to automatically track current phase timing.</p>
+        </div>
+        <div class="roadmap-stats">
+          <article>
+            <span>Current Phase</span>
+            <strong id="roadmapReadiness">Not started</strong>
+            <p id="roadmapReadinessLabel">Set the partnership start date to activate phase tracking.</p>
+          </article>
+          <article>
+            <span>Phase Progress</span>
+            <strong id="stageProgressLabel">Not started</strong>
+            <div class="mini-progress">
+              <div id="stageProgressFill"></div>
+            </div>
+            <p id="stageProgressDetail">Set a start date to activate stage tracking.</p>
+          </article>
+          <article>
+            <span>Current Priority</span>
+            <strong id="roadmapTopFocus">Add tracker data</strong>
+            <p id="roadmapTopFocusNote">Your highest priority items will appear here</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="roadmap-track">
+        <article class="phase-card">
+          <div class="phase-grid">
+            <div>
+              <p class="eyebrow">Phase 1</p>
+              <h3>Month 1: Business Diagnostic</h3>
+              <div class="phase-meta">
+                <span class="pill">Month 1</span>
+                <span class="pill">Diagnosis</span>
+                <span class="pill">Priority setting</span>
+                <span class="pill" id="phase1Rag">RAG: Red</span>
+              </div>
+              <p class="roadmap-summary">
+                Develop a complete understanding of the commercial, operational and clinical performance of Clarendon
+                Dental and identify the strengths, opportunities and priorities for the next 12 months.
+              </p>
+              <ul class="phase-list">
+                <li>Financial review and analysis</li>
+                <li>Patient performance</li>
+                <li>Marketing review</li>
+                <li>Team, operations, capacity and commercial review</li>
+              </ul>
+              <a class="secondary phase-detail-link" href="phase1-details.html">Open Phase 1 workflow record</a>
+            </div>
+            <div class="phase-callout phase-live">
+              <h4>Live summary from tracker</h4>
+              <p id="phase1Summary">Enter section data in the tracker to populate this phase summary.</p>
+              <ul class="phase-list" id="phase1Highlights"></ul>
+            </div>
+            <div class="phase-callout">
+              <h4>Deliverables by Month 1</h4>
+              <ul class="phase-list">
+                <li>Financial review and analysis completed</li>
+                <li>Cash flow forecast completed</li>
+                <li>KPI dashboard agreed</li>
+                <li>Initial opportunities report</li>
+                <li>90-day priority action plan</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="phase-card">
+          <div class="phase-grid">
+            <div>
+              <p class="eyebrow">Phase 2</p>
+              <h3>Months 2–4: Building the Foundations</h3>
+              <div class="phase-meta">
+                <span class="pill">Months 2–4</span>
+                <span class="pill">Foundation building</span>
+                <span class="pill">Strategic review at Month 4</span>
+                <span class="pill" id="phase2Rag">RAG: Amber</span>
+              </div>
+              <p class="roadmap-summary">
+                Implement the highest-priority improvements identified during Phase One while establishing the
+                foundations for long-term sustainable growth.
+              </p>
+              <ul class="phase-list">
+                <li>Premium patient experience</li>
+                <li>Team foundations</li>
+                <li>Premium brand and marketing</li>
+                <li>Operational excellence</li>
+                <li>Commercial performance</li>
+              </ul>
+              <a class="secondary phase-detail-link" href="phase2-details.html">Open Phase 2 workflow record</a>
+            </div>
+            <div class="phase-callout phase-live">
+              <h4>Live summary from tracker</h4>
+              <p id="phase2Summary">The roadmap will translate your phase 1 findings into the next 90-day priorities.</p>
+              <ul class="phase-list" id="phase2Highlights"></ul>
+            </div>
+            <div class="phase-callout">
+              <h4>Strategic review at Month 4</h4>
+              <ul class="phase-list">
+                <li>What has worked well?</li>
+                <li>What has delivered measurable improvement?</li>
+                <li>Which priorities have changed?</li>
+                <li>What should be accelerated or paused?</li>
+                <li>What have we learned?</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="phase-card">
+          <div class="phase-grid">
+            <div>
+              <p class="eyebrow">Phase 3</p>
+              <h3>Months 5–12: Continuous Improvement & Strategic Growth</h3>
+              <div class="phase-meta">
+                <span class="pill">Three 90-day cycles</span>
+                <span class="pill">Embedding excellence</span>
+                <span class="pill">Strategic growth</span>
+                <span class="pill" id="phase3Rag">RAG: Amber</span>
+              </div>
+              <p class="roadmap-summary">
+                Embed improvements, develop the team, strengthen the brand and continue building Clarendon into the
+                region’s leading premium dental practice.
+              </p>
+              <ul class="phase-list">
+                <li>Cycle one: embedding excellence</li>
+                <li>Cycle two: sustainable growth</li>
+                <li>Cycle three: future planning</li>
+                <li>3D lab build with CROI review and payback tracking</li>
+              </ul>
+              <a class="secondary phase-detail-link" href="phase3-details.html">Open Phase 3 workflow record</a>
+            </div>
+            <div class="phase-callout phase-live">
+              <h4>Live summary from tracker</h4>
+              <p id="phase3Summary">The year-two style cycle summary will appear once the tracker has enough phase one data.</p>
+              <ul class="phase-list" id="phase3Highlights"></ul>
+            </div>
+            <div class="phase-callout">
+              <h4>Each 90-day cycle ends with</h4>
+              <ul class="phase-list">
+                <li>Strategic review</li>
+                <li>Progress check against priorities</li>
+                <li>Celebration of achievements</li>
+                <li>Refinement of the next plan</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel brief-panel">
+        <div>
+          <h2>Programme outcome</h2>
+          <p>
+            By the end of the first year, Clarendon should have a detailed understanding of financial and commercial
+            performance, clear operational KPIs, a refined premium patient journey, a stronger leadership team and a
+            practical roadmap for sustained growth.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

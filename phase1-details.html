@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phase 1 Workflow Record | Clarendon</title>
+    <meta
+      name="description"
+      content="Phase One workflow record for Practice Discovery and Strategic Review at Clarendon Dental."
+    />
+    <meta name="theme-color" content="#1090c0" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="phase1-details.js"></script>
+  </head>
+  <body class="phase-detail-page">
+    <header class="topbar panel">
+      <div class="header-brand">
+        <img class="header-logo" src="assets/tdbmlogo.png" alt="The Dental Business Manager logo" />
+        <div>
+          <p class="eyebrow">The Dental Business Manager</p>
+          <h1>Phase 1 Workflow Record</h1>
+        </div>
+      </div>
+      <nav class="roadmap-nav" aria-label="Primary">
+        <a class="navlink" href="roadmap.html">Partnership Portal</a>
+        <a class="navlink" href="index.html">Phase 1</a>
+        <a class="navlink" href="phase2.html">Phase 2</a>
+        <a class="navlink" href="phase3.html">Phase 3</a>
+        <a class="navlink" href="reports.html">Reports</a>
+        <button class="navlink navbutton" id="signOutBtn" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <main class="phase-detail-shell">
+      <section class="panel phase-detail-hero">
+        <p class="eyebrow">Phase One (Days 1-30)</p>
+        <h2>Practice Discovery & Strategic Review</h2>
+        <p class="roadmap-summary">
+          Develop a complete understanding of every aspect of the practice, identifying strengths, opportunities and
+          priorities for the next twelve months.
+        </p>
+        <div class="phase-detail-toolbar">
+          <div class="checklist-progress">
+            <strong id="checklistProgressLabel">0/0 complete</strong>
+            <div class="progress-bar">
+              <div id="checklistProgressFill"></div>
+            </div>
+          </div>
+          <div class="print-tools">
+            <button id="printChecklistBtn" class="secondary" type="button">Print or Save as PDF</button>
+            <button id="resetChecklistBtn" class="ghost" type="button">Reset checkboxes</button>
+          </div>
+        </div>
+        <div class="checklist-score-grid">
+          <article>
+            <span>Total items</span>
+            <strong id="checklistTotal">0</strong>
+          </article>
+          <article>
+            <span>Completed</span>
+            <strong id="checklistComplete">0</strong>
+          </article>
+          <article>
+            <span>Remaining</span>
+            <strong id="checklistRemaining">0</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel phase-detail-card" data-score-section="financial">
+        <h3>1. Financial Review and Analysis</h3>
+        <div class="phase-detail-grid">
+          <article>
+            <h4>Understand Revenue</h4>
+            <ul class="phase-list">
+              <li>Revenue by clinician</li>
+              <li>Revenue by speciality</li>
+              <li>Revenue by treatment type</li>
+              <li>Income from plans / subscriptions</li>
+              <li>Average daily revenue</li>
+              <li>Average monthly revenue</li>
+              <li>Revenue trends</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Understand Profitability</h4>
+            <ul class="phase-list">
+              <li>Gross profit</li>
+              <li>Profit by clinician</li>
+              <li>Profit by speciality</li>
+              <li>Staff costs</li>
+              <li>Associate costs</li>
+              <li>Laboratory costs</li>
+              <li>Marketing costs</li>
+              <li>Overhead analysis</li>
+              <li>EBITDA</li>
+              <li>Cash generation</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Pricing</h4>
+            <ul class="phase-list">
+              <li>Historic fee increases</li>
+              <li>Comparison with local competitors</li>
+              <li>Premium pricing opportunities</li>
+              <li>Fee structure review</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Cash & Investment</h4>
+            <ul class="phase-list">
+              <li>Cash flow forecast</li>
+              <li>Loan commitments</li>
+              <li>Capital expenditure</li>
+              <li>Future investment plans</li>
+            </ul>
+          </article>
+          <article class="phase-detail-wide">
+            <h4>Key Questions</h4>
+            <ul class="phase-list">
+              <li>Which clinicians generate the greatest revenue?</li>
+              <li>Which clinicians generate the greatest profit?</li>
+              <li>Which treatments are most profitable?</li>
+              <li>Which overheads have increased most?</li>
+              <li>What return has marketing generated?</li>
+              <li>Which investments have produced the greatest return?</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel phase-detail-card" data-score-section="patients">
+        <h3>2. Patients</h3>
+        <div class="phase-detail-grid">
+          <article>
+            <h4>Patient Flow</h4>
+            <ul class="phase-list">
+              <li>New enquiries</li>
+              <li>New patient consultations</li>
+              <li>Treatment starts</li>
+              <li>Reviews</li>
+              <li>Recall attendance</li>
+              <li>Emergency appointments</li>
+              <li>Waiting lists</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Conversion</h4>
+            <ul class="phase-list">
+              <li>Telephone enquiries to consultation</li>
+              <li>Website enquiries to consultation</li>
+              <li>Consultation to treatment</li>
+              <li>Treatment Coordinator conversion</li>
+              <li>Orthodontic enquiries to consultation</li>
+              <li>Orthodontic consultation to treatment start</li>
+              <li>Orthodontic Treatment Coordinator conversion</li>
+              <li>Internal referrals</li>
+              <li>External referrals</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Patient Behaviour</h4>
+            <ul class="phase-list">
+              <li>Average treatment value</li>
+              <li>Cancellation rate</li>
+              <li>Failure to attend</li>
+              <li>Time from consultation to treatment</li>
+              <li>Returning patients</li>
+              <li>Patient retention</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Key Questions</h4>
+            <ul class="phase-list">
+              <li>How many new patients each week?</li>
+              <li>How many begin treatment?</li>
+              <li>Why do patients decline treatment?</li>
+              <li>Why do patients choose Clarendon?</li>
+              <li>Which treatments are growing fastest?</li>
+              <li>Where are patients being lost?</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel phase-detail-card" data-score-section="marketing">
+        <h3>3. Marketing</h3>
+        <div class="phase-detail-grid">
+          <article>
+            <h4>Review</h4>
+            <ul class="phase-list">
+              <li>Marketing budget</li>
+              <li>Cost per lead</li>
+              <li>Cost per patient</li>
+              <li>Cost per treatment start</li>
+              <li>Website performance</li>
+              <li>Google rankings</li>
+              <li>Google reviews</li>
+              <li>Referral sources</li>
+              <li>Social media</li>
+              <li>Internal marketing</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Key Questions</h4>
+            <ul class="phase-list">
+              <li>Which marketing activities genuinely generate patients?</li>
+              <li>What is the return on investment?</li>
+              <li>Which treatments generate the greatest demand?</li>
+              <li>Which campaigns have performed best?</li>
+              <li>How are enquiries tracked?</li>
+              <li>Which marketing should stop?</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel phase-detail-card" data-score-section="team">
+        <h3>4. Team</h3>
+        <div class="phase-detail-grid">
+          <article>
+            <h4>Review</h4>
+            <ul class="phase-list">
+              <li>Organisation structure</li>
+              <li>Roles & responsibilities</li>
+              <li>Accountability</li>
+              <li>KPIs</li>
+              <li>Productivity</li>
+              <li>Recruitment</li>
+              <li>Staff turnover</li>
+              <li>Appraisals</li>
+              <li>Training</li>
+              <li>Leadership</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Key Questions</h4>
+            <ul class="phase-list">
+              <li>What does every team member own?</li>
+              <li>Where are the bottlenecks?</li>
+              <li>Which skills are missing?</li>
+              <li>What frustrates the team?</li>
+              <li>What would the team improve tomorrow?</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel phase-detail-card" data-score-section="operations">
+        <h3>5. Operations</h3>
+        <div class="phase-detail-grid">
+          <article>
+            <h4>Review</h4>
+            <ul class="phase-list">
+              <li>Patient journey</li>
+              <li>Reception workflow</li>
+              <li>Telephone handling</li>
+              <li>Treatment coordination</li>
+              <li>Diary management</li>
+              <li>Surgery utilisation</li>
+              <li>Recall systems</li>
+              <li>Automation</li>
+              <li>Internal communication</li>
+              <li>Administration</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Key Questions</h4>
+            <ul class="phase-list">
+              <li>Where is time wasted?</li>
+              <li>Where do patients experience delays?</li>
+              <li>Are diaries optimised?</li>
+              <li>What could be automated?</li>
+              <li>What operational improvements would have the biggest impact?</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel phase-detail-card" data-score-section="capacity">
+        <h3>6. Capacity</h3>
+        <div class="phase-detail-grid">
+          <article>
+            <h4>Review</h4>
+            <ul class="phase-list">
+              <li>Surgery utilisation</li>
+              <li>Chair occupancy</li>
+              <li>Clinician utilisation</li>
+              <li>Hygiene utilisation</li>
+              <li>Daily production</li>
+              <li>Available capacity</li>
+              <li>Cancellation management</li>
+            </ul>
+          </article>
+          <article>
+            <h4>Key Questions</h4>
+            <ul class="phase-list">
+              <li>Could another clinician work tomorrow?</li>
+              <li>Are surgeries being used effectively?</li>
+              <li>Is demand exceeding capacity?</li>
+              <li>Where is unused capacity?</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel phase-detail-card">
+        <h3>Deliverables by Day 30 should include visibility of...</h3>
+        <ul class="phase-list phase-deliverables">
+          <li>Financial Review and Analysis</li>
+          <li>Draft Cash Flow Forecast</li>
+          <li>Patient Journey Map</li>
+          <li>Marketing Review</li>
+          <li>Team Review</li>
+          <li>Capacity Review</li>
+          <li>Operational Review</li>
+          <li>Priority Opportunities Report</li>
+          <li>12-Month Strategic Roadmap</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
