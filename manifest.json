@@ -1,12 +1,12 @@
 {
-  "name": "Clarendon Business Diagnostics",
-  "short_name": "Business Diagnostics",
+  "name": "Partnership Portal",
+  "short_name": "Portal",
   "description": "Business diagnostics workspace for tracking clinical, operational and commercial findings.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#eef8f8",
-  "theme_color": "#006d73",
+  "theme_color": "#1090c0",
   "icons": [
     {
       "src": "icon.svg",

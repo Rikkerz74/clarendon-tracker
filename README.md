@@ -1,4 +1,4 @@
-# Clarendon Business Diagnostics
+# Partnership Portal
 
 A hosted, authenticated diagnostics tracker for the Clarendon Dental business plan. Owners can sign in, review the live business diagnostics tracker, and switch to the roadmap view that summarises all three phases and timescales from the shared server state.
 
@@ -17,6 +17,10 @@ A hosted, authenticated diagnostics tracker for the Clarendon Dental business pl
 2. Run `npm install` if dependencies are not already installed.
 3. Start the app with `npm start`.
 4. Open `http://localhost:3000/login.html` in a browser.
+
+## Deploy online
+
+See [DEPLOY.md](DEPLOY.md) for the exact hosting steps.
 
 ## Demo login
 

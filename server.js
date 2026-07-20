@@ -12,9 +12,9 @@ const JWT_SECRET = process.env.JWT_SECRET || 'clarendon-dev-secret';
 const DEMO_EMAIL = process.env.DEFAULT_OWNER_EMAIL || 'owner@clarendon.local';
 const DEMO_PASSWORD = process.env.DEFAULT_OWNER_PASSWORD || 'ChangeMe123!';
 const DEMO_NAME = process.env.DEFAULT_OWNER_NAME || 'Practice Owner';
-const STATE_DIR = path.join(__dirname, 'data');
+const STATE_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 const STATE_FILE = path.join(STATE_DIR, 'state.json');
-const UPLOAD_DIR = path.join(__dirname, 'uploads');
+const UPLOAD_DIR = process.env.UPLOAD_DIR || path.join(__dirname, 'uploads');
 const MAX_UPLOAD_SIZE_BYTES = 25 * 1024 * 1024;
 
 const ALLOWED_DOCUMENT_EXTENSIONS = new Set([
