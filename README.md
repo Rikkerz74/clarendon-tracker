@@ -25,7 +25,7 @@ See [DEPLOY.md](DEPLOY.md) for the exact hosting steps.
 ## Demo login
 
 - Email: `owner@clarendon.local`
-- Password: `ChangeMe123!`
+- Password: `tdbmclarendon2352`
 
 ## Notes
 

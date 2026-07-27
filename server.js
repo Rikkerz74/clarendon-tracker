@@ -10,7 +10,7 @@ const app = express();
 const PORT = Number(process.env.PORT || 3000);
 const JWT_SECRET = process.env.JWT_SECRET || 'clarendon-dev-secret';
 const DEMO_EMAIL = process.env.DEFAULT_OWNER_EMAIL || 'owner@clarendon.local';
-const DEMO_PASSWORD = process.env.DEFAULT_OWNER_PASSWORD || 'ChangeMe123!';
+const DEMO_PASSWORD = process.env.DEFAULT_OWNER_PASSWORD || 'tdbmclarendon2352';
 const DEMO_NAME = process.env.DEFAULT_OWNER_NAME || 'Practice Owner';
 const STATE_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 const STATE_FILE = path.join(STATE_DIR, 'state.json');
@@ -150,8 +150,10 @@ async function ensureDemoUser(state) {
     state.users = [];
   }
 
-  const hasDemoUser = state.users.some((user) => String(user.email).toLowerCase() === DEMO_EMAIL.toLowerCase());
-  if (!hasDemoUser) {
+  let changed = false;
+  const demoUser = state.users.find((user) => String(user.email).toLowerCase() === DEMO_EMAIL.toLowerCase());
+
+  if (!demoUser) {
     state.users.push({
       id: 'owner-1',
       email: DEMO_EMAIL,
@@ -160,9 +162,30 @@ async function ensureDemoUser(state) {
       practiceId: DEFAULT_PRACTICE_ID,
       passwordHash: await bcrypt.hash(DEMO_PASSWORD, 10)
     });
+    changed = true;
+  } else {
+    if (!demoUser.passwordHash || !(await bcrypt.compare(DEMO_PASSWORD, demoUser.passwordHash))) {
+      demoUser.passwordHash = await bcrypt.hash(DEMO_PASSWORD, 10);
+      changed = true;
+    }
+
+    if (!demoUser.name) {
+      demoUser.name = DEMO_NAME;
+      changed = true;
+    }
+
+    if (!demoUser.role) {
+      demoUser.role = 'owner';
+      changed = true;
+    }
+
+    if (!demoUser.practiceId) {
+      demoUser.practiceId = DEFAULT_PRACTICE_ID;
+      changed = true;
+    }
   }
 
-  return state;
+  return changed;
 }
 
 function ensurePracticeExists(state, practiceId, practiceName) {
@@ -206,8 +229,9 @@ async function loadState() {
   await ensureStateFile();
   const raw = await fs.readFile(STATE_FILE, 'utf8');
   const state = JSON.parse(raw);
-  const normalized = await ensureDemoUser(state);
-  let changed = normalized !== state;
+  const demoUserUpdated = await ensureDemoUser(state);
+  const normalized = state;
+  let changed = demoUserUpdated;
 
   for (const user of normalized.users) {
     if (!user.practiceId) {

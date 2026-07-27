@@ -33,7 +33,7 @@ If your host does not provide persistent disk storage, the tracker will lose sav
 ## Demo login
 
 - Email: `owner@clarendon.local`
-- Password: `ChangeMe123!`
+- Password: `tdbmclarendon2352`
 
 ## First test after deploy
 
