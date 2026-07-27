@@ -16,6 +16,8 @@ const STATE_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 const STATE_FILE = path.join(STATE_DIR, 'state.json');
 const UPLOAD_DIR = process.env.UPLOAD_DIR || path.join(__dirname, 'uploads');
 const MAX_UPLOAD_SIZE_BYTES = 25 * 1024 * 1024;
+const DEFAULT_PRACTICE_ID = 'clarendon-main';
+const DEFAULT_SECTION_IDS = ['financial', 'patients', 'marketing', 'team', 'operations', 'capacity', 'commercial'];
 
 const ALLOWED_DOCUMENT_EXTENSIONS = new Set([
   '.txt',
@@ -48,21 +50,34 @@ function defaultSectionState() {
   };
 }
 
+function createPracticeState(overrides = {}) {
+  return {
+    practiceId: overrides.practiceId || DEFAULT_PRACTICE_ID,
+    practiceName: overrides.practiceName || 'Clarendon Dental, Southsea',
+    diagnosticWindow: overrides.diagnosticWindow || 'Phase 1 - 30 Day Business Diagnostic',
+    createdAt: overrides.createdAt || new Date().toISOString(),
+    updatedAt: overrides.updatedAt || null,
+    sections: Object.fromEntries(DEFAULT_SECTION_IDS.map((sectionId) => [sectionId, defaultSectionState()])),
+    ...overrides,
+    sections: Object.fromEntries(
+      DEFAULT_SECTION_IDS.map((sectionId) => [
+        sectionId,
+        {
+          ...defaultSectionState(),
+          ...(overrides.sections && overrides.sections[sectionId] ? overrides.sections[sectionId] : {})
+        }
+      ])
+    )
+  };
+}
+
 function defaultRegistry() {
-  const sectionIds = ['financial', 'patients', 'marketing', 'team', 'operations', 'capacity', 'commercial'];
   return {
     version: 2,
-    activePracticeId: 'clarendon-main',
+    activePracticeId: DEFAULT_PRACTICE_ID,
     updatedAt: null,
     practices: {
-      'clarendon-main': {
-        practiceId: 'clarendon-main',
-        practiceName: 'Clarendon Dental, Southsea',
-        diagnosticWindow: 'Phase 1 - 30 Day Business Diagnostic',
-        createdAt: new Date().toISOString(),
-        updatedAt: null,
-        sections: Object.fromEntries(sectionIds.map((sectionId) => [sectionId, defaultSectionState()]))
-      }
+      [DEFAULT_PRACTICE_ID]: createPracticeState({ practiceId: DEFAULT_PRACTICE_ID })
     }
   };
 }
@@ -142,6 +157,7 @@ async function ensureDemoUser(state) {
       email: DEMO_EMAIL,
       name: DEMO_NAME,
       role: 'owner',
+      practiceId: DEFAULT_PRACTICE_ID,
       passwordHash: await bcrypt.hash(DEMO_PASSWORD, 10)
     });
   }
@@ -149,12 +165,64 @@ async function ensureDemoUser(state) {
   return state;
 }
 
+function ensurePracticeExists(state, practiceId, practiceName) {
+  if (!state.registry || typeof state.registry !== 'object') {
+    state.registry = defaultRegistry();
+  }
+
+  if (!state.registry.practices || typeof state.registry.practices !== 'object') {
+    state.registry.practices = {};
+  }
+
+  const key = String(practiceId || DEFAULT_PRACTICE_ID);
+  if (!state.registry.practices[key]) {
+    state.registry.practices[key] = createPracticeState({
+      practiceId: key,
+      practiceName: practiceName || key
+    });
+  }
+
+  return state.registry.practices[key];
+}
+
+function getPracticeIdForUser(user) {
+  return String(user && user.practiceId ? user.practiceId : DEFAULT_PRACTICE_ID);
+}
+
+function registryViewForUser(registry, user) {
+  const practiceId = getPracticeIdForUser(user);
+  const clone = JSON.parse(JSON.stringify(registry));
+
+  if (!clone.practices || !clone.practices[practiceId]) {
+    clone.practices = clone.practices || {};
+    clone.practices[practiceId] = createPracticeState({ practiceId, practiceName: user && user.name ? `${user.name}'s Practice` : practiceId });
+  }
+
+  clone.activePracticeId = practiceId;
+  return clone;
+}
+
 async function loadState() {
   await ensureStateFile();
   const raw = await fs.readFile(STATE_FILE, 'utf8');
   const state = JSON.parse(raw);
   const normalized = await ensureDemoUser(state);
-  if (normalized !== state) {
+  let changed = normalized !== state;
+
+  for (const user of normalized.users) {
+    if (!user.practiceId) {
+      user.practiceId = DEFAULT_PRACTICE_ID;
+      changed = true;
+    }
+
+    ensurePracticeExists(normalized, user.practiceId, user.name);
+  }
+
+  if (!normalized.registry.activePracticeId || !normalized.registry.practices[normalized.registry.activePracticeId]) {
+    normalized.registry.activePracticeId = DEFAULT_PRACTICE_ID;
+    changed = true;
+  }
+  if (changed) {
     await saveState(normalized);
   } else if (!state.users || state.users.length === 0) {
     await saveState(normalized);
@@ -171,7 +239,8 @@ function publicUser(user) {
     id: user.id,
     email: user.email,
     name: user.name,
-    role: user.role
+    role: user.role,
+    practiceId: user.practiceId || DEFAULT_PRACTICE_ID
   };
 }
 
@@ -250,6 +319,11 @@ app.post('/api/login', withState(async (req, res, _next, state) => {
     return res.status(401).json({ error: 'Invalid email or password' });
   }
 
+  const practiceId = getPracticeIdForUser(user);
+  user.practiceId = practiceId;
+  ensurePracticeExists(state, practiceId, user.name);
+  await saveState(state);
+
   const token = signToken(user);
   res.cookie('auth', token, {
     httpOnly: true,
@@ -271,7 +345,7 @@ app.get('/api/me', requireAuth, (req, res) => {
 });
 
 app.get('/api/state', requireAuth, withState(async (req, res) => {
-  res.json(req.registry);
+  res.json(registryViewForUser(req.registry, req.user));
 }));
 
 app.post('/api/state', requireAuth, withState(async (req, res, _next, state) => {
@@ -280,6 +354,16 @@ app.post('/api/state', requireAuth, withState(async (req, res, _next, state) => 
     return res.status(400).json({ error: 'Missing registry payload' });
   }
 
+  const practiceId = getPracticeIdForUser(req.user);
+  if (!incoming.practices || !incoming.practices[practiceId]) {
+    incoming.practices = incoming.practices || {};
+    incoming.practices[practiceId] = createPracticeState({
+      practiceId,
+      practiceName: req.user.name ? `${req.user.name}'s Practice` : practiceId
+    });
+  }
+
+  incoming.activePracticeId = practiceId;
   state.registry = incoming;
   if (!state.registry.updatedAt) {
     state.registry.updatedAt = new Date().toISOString();

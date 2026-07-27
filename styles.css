@@ -614,36 +614,43 @@ select:focus {
 .report-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
 }
 
 .report-grid article {
   border-radius: 18px;
-  padding: 14px;
+  padding: 12px 11px;
   background: rgba(255, 248, 239, 0.9);
   border: 1px solid rgba(16, 144, 192, 0.12);
+  min-width: 0;
 }
 
 .report-grid span {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
+  line-height: 1.15;
+  text-wrap: balance;
 }
 
 .report-grid strong {
   display: block;
-  font-size: 1.35rem;
+  font-size: 1.12rem;
   color: var(--brand-dark);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
 }
 
 .report-grid p {
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.35;
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
 }
 
 .report-list {

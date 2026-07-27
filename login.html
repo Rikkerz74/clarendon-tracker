@@ -44,16 +44,16 @@
       <form id="loginForm">
         <label>
           Email
-          <input type="email" name="email" autocomplete="username" value="owner@clarendon.local" />
+          <input type="email" name="email" autocomplete="username" />
         </label>
         <label>
           Password
-          <input type="password" name="password" autocomplete="current-password" value="ChangeMe123!" />
+          <input type="password" name="password" autocomplete="current-password" />
         </label>
         <button type="submit">Sign in</button>
         <div class="error" id="error"></div>
       </form>
-      <p class="hint">Demo login for the first hosted version: owner@clarendon.local / ChangeMe123!</p>
+      <p class="hint">Use the owner credentials provided by your administrator.</p>
     </main>
     <script>
       const form = document.getElementById('loginForm');
