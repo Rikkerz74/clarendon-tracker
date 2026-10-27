@@ -8,6 +8,7 @@ Use a Node host such as Render, Railway, or Fly.io.
 
 ## Required environment variables
 
+- `NODE_VERSION=24.22.1` - patched Node.js runtime; use a later patched release in the Node 24 major when available
 - `JWT_SECRET` - long random string
 - `DEFAULT_OWNER_EMAIL` - login email for the owner
 - `DEFAULT_OWNER_PASSWORD` - login password for the owner
@@ -26,9 +27,9 @@ If your host does not provide persistent disk storage, the tracker will lose sav
 1. Create a new Web Service from this GitHub repo.
 2. Set the build command to `npm install`.
 3. Set the start command to `npm start`.
-4. Add the environment variables listed above.
+4. Set `NODE_VERSION` to `24.22.1` or a later patched Node.js 24 release, and add the other environment variables listed above.
 5. Add persistent disk storage for `data/` and `uploads/`.
-6. Deploy and sign in at `/login.html`.
+6. Rebuild and redeploy the service so it uses the patched runtime and current system certificate store, then sign in at `/login.html`.
 
 ## Demo login
 

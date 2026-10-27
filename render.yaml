@@ -12,6 +12,8 @@ services:
       mountPath: /opt/render/project/src/storage
       sizeGB: 1
     envVars:
+      - key: NODE_VERSION
+        value: 24.22.1
       - key: NODE_ENV
         value: production
       - key: JWT_SECRET
